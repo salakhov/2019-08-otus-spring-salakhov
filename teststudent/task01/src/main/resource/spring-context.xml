@@ -3,4 +3,9 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="questionDao" class="ru.otus.task01.dao.QuestionDaoImpl">
+    </bean>
+    <bean id="questionService" class="ru.otus.task01.service.QuestionServiceImpl">
+        <constructor-arg name="dao" ref="questionDao"/>
+    </bean>
 </beans>
