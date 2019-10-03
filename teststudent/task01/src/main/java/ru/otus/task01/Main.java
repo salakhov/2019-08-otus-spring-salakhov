@@ -9,7 +9,7 @@ import java.io.InputStream;
 public class Main {
     public static void main(String[] args) {
         System.out.println("test");
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("/spring-context.xml");
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:spring-context.xml");
         QuestionService questionService = ctx.getBean(QuestionService.class);
         Question question = questionService.getQuestion();
         System.out.println(question.getText());
