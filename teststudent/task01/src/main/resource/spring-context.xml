@@ -3,9 +3,23 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="questionDao" class="ru.otus.task01.dao.QuestionDaoImpl">
+
+    <bean id="testDao" class="ru.otus.task01.dao.TestDaoImpl">
+        <constructor-arg name="resource" value="resource.csv"/>
     </bean>
-    <bean id="questionService" class="ru.otus.task01.service.QuestionServiceImpl">
-        <constructor-arg name="dao" ref="questionDao"/>
+
+    <bean id="testService" class="ru.otus.task01.service.TestServiceImpl">
+        <constructor-arg name="dao" ref="testDao"/>
+        <constructor-arg name="test" ref="test"/>
     </bean>
+
+    <bean id="userService" class="ru.otus.task01.service.UserServiceImpl">
+        <constructor-arg name="testService" ref="testService"/>
+    </bean>
+    <bean name="test" class="ru.otus.task01.domain.Test">
+    </bean>
+<!--    <bean name="question" class="ru.otus.task01.domain.Question">-->
+<!--    </bean>-->
+<!--    <bean name="puzzle" class="ru.otus.task01.domain.Puzzle">-->
+<!--    </bean&ndash;&gt;-->
 </beans>
