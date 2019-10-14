@@ -2,6 +2,7 @@ package ru.otus.task01;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.otus.task01.domain.Test;
+import ru.otus.task01.domain.User;
 import ru.otus.task01.service.TestService;
 import ru.otus.task01.service.UserService;
 
@@ -12,6 +13,6 @@ public class Main {
 
         //TestService testService = ctx.getBean(TestService.class);
         UserService userService = ctx.getBean(UserService.class);
-        userService.runTest();
+        userService.TestUser();
     }
 }

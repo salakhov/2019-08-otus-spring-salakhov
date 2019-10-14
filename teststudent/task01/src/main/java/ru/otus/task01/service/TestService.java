@@ -5,7 +5,7 @@ import ru.otus.task01.domain.Puzzle;
 import java.util.List;
 
 /**
- * Класс
+ * Класс сервис для Теста студентов
  */
 
 public interface TestService {
