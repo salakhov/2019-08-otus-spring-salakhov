@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="testDao" class="ru.otus.task01.dao.TestDaoImpl">
-        <constructor-arg name="resource" value="resource.csv"/>
+        <constructor-arg name="resource" value="questions.csv"/>
     </bean>
 
     <bean id="testService" class="ru.otus.task01.service.TestServiceImpl">
