@@ -13,8 +13,12 @@
         <constructor-arg name="test" ref="test"/>
     </bean>
 
+    <bean id="consoleService" class="ru.otus.task01.service.ConsoleServiceImpl">
+    </bean>
+
     <bean id="userService" class="ru.otus.task01.service.UserServiceImpl">
         <constructor-arg name="testService" ref="testService"/>
+        <constructor-arg name="consoleService" ref="consoleService"/>
     </bean>
     <bean name="test" class="ru.otus.task01.domain.Test">
     </bean>
