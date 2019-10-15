@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="testDao" class="ru.otus.task02.dao.TestDaoImpl">
+        <constructor-arg name="resource" value="questions.csv"/>
+    </bean>
+
+    <bean id="testService" class="ru.otus.task02.service.TestServiceImpl">
+        <constructor-arg name="dao" ref="testDao"/>
+        <constructor-arg name="test" ref="test"/>
+    </bean>
+
+    <bean id="consoleService" class="ru.otus.task02.service.ConsoleServiceImpl">
+    </bean>
+
+    <bean id="userService" class="ru.otus.task02.service.UserServiceImpl">
+        <constructor-arg name="testService" ref="testService"/>
+        <constructor-arg name="consoleService" ref="consoleService"/>
+    </bean>
+    <bean name="test" class="ru.otus.task02.domain.Test">
+    </bean>
+<!--    <bean name="question" class="ru.otus.task02.domain.Question">-->
+<!--    </bean>-->
+<!--    <bean name="puzzle" class="ru.otus.task02.domain.Puzzle">-->
+<!--    </bean&ndash;&gt;-->
+</beans>
