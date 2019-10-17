@@ -1,5 +1,8 @@
 package ru.otus.task02.dao;
 
+import org.springframework.cglib.core.Local;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 import ru.otus.task02.domain.Question;
@@ -13,21 +16,24 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import ru.otus.task02.domain.Test;
 
-
 public class TestDaoImpl implements TestDao {
     private String resource;
+    private String locale;
 
-    public TestDaoImpl(String resource) {
+    public TestDaoImpl(String resource, String locale) {
         this.resource = resource;
+        this.locale = locale;
     }
 
     @Override
     public Test read() {
-        CSVRecord csvParser;
         Test test = new Test();
+        System.out.println(resource);
+
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         getClass().getClassLoader().getResourceAsStream(resource)))) {
+            System.out.println("1");
             Iterable<CSVRecord> records = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(reader);
             ArrayList<Puzzle> puzzleList = new ArrayList<Puzzle>();
             for (CSVRecord record:records){

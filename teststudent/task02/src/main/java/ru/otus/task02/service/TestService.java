@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface TestService {
     void read();
-    void printResult();
     List<Puzzle> getPuzzleList();
 }

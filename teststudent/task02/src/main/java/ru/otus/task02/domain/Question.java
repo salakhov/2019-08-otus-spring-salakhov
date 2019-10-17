@@ -11,10 +11,6 @@ public class Question {
         this.text = text;
     }
 
-    public void print(){
-        System.out.println(text);
-    }
-
     @Override
     public String toString() {
         return text;

@@ -1,19 +1,25 @@
 package ru.otus.task02.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Service;
 import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 import ru.otus.task02.domain.User;
+
+import java.util.Locale;
 
 
 /**
  * Реализация сервиса для взаимодействия с пользователем.
  */
-
+@Service
 public class UserServiceImpl implements UserService {
     private TestService testService;
     private ConsoleService consoleService;
     private User user;
 
+    @Autowired
     public UserServiceImpl(TestService testService, ConsoleService consoleService) {
         this.testService = testService;
         this.consoleService = consoleService;
@@ -21,17 +27,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void TestUser(){
+    public void testUser(){
         this.readUserProperties();
         testService.read();
         this.getUserAnswers();
-        testService.printResult();
+        consoleService.printPrintResultMessage();
+        consoleService.printTestResult(testService.getPuzzleList());
     }
     @Override
     public User readUserProperties(){
-        System.out.println("Имя:");
+        consoleService.printUserNameRequestMessage();
         user.setFirstName(consoleService.readLine());
-        System.out.println("Фамилия:");
+        consoleService.printUserSecondNameRequestMessage();
         user.setSecondName(consoleService.readLine());
         return user;
     }
@@ -39,14 +46,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void getUserAnswers() {
         for(Puzzle pzl:testService.getPuzzleList()){
-            System.out.println(pzl.getQuestion().toString());
-            System.out.println("Варианты ответов:");
-            for(Answer ans:pzl.getAnswerList()){
-                System.out.println(ans.getAnswer().toString());
-            }
-            System.out.println("Введите ответ без учета регистра: ");
+            consoleService.printQuestion(pzl);
+            consoleService.printAnswerVariantMessage();
+            consoleService.printAnswerVariants(pzl);
+            consoleService.printChooseVariantMessage();
             Answer ans = new Answer(consoleService.readLine());
             pzl.setUserAnswer(ans);
         }
     }
+
+
 }
