@@ -36,28 +36,22 @@ public class ConsoleServiceImpl implements ConsoleService {
 
     @Override
     public void printUserNameRequestMessage(){
-        System.out.println(
-                messageSource.getMessage("user.name",new String[] {},locale.getLocale()));
+        System.out.println(messageSource.getMessage("user.name",new String[] {},locale.getLocale()));
     }
 
     @Override
     public void printUserSecondNameRequestMessage(){
-        System.out.println(
-                messageSource.getMessage("user.lastname", new String[] {}, locale.getLocale()));
+        System.out.println(messageSource.getMessage("user.lastname", new String[] {}, locale.getLocale()));
     }
 
     @Override
     public void printAnswerVariantMessage(){
-        System.out.println(
-                messageSource.getMessage("app.iface.variants", new String[] {}, locale.getLocale())
-        );
+        System.out.println(messageSource.getMessage("app.iface.variants", new String[] {}, locale.getLocale()));
     }
 
     @Override
     public void printChooseVariantMessage(){
-        System.out.println(
-                messageSource.getMessage("app.iface.typeanswer", new String[] {}, locale.getLocale())
-        );
+        System.out.println(messageSource.getMessage("app.iface.typeanswer", new String[] {}, locale.getLocale()));
     }
 
     @Override
@@ -72,9 +66,7 @@ public class ConsoleServiceImpl implements ConsoleService {
     }
 
     public void printPrintResultMessage(){
-        System.out.println(
-                messageSource.getMessage("app.iface.printresult", new String[] {}, locale.getLocale())
-        );
+        System.out.println(messageSource.getMessage("app.iface.printresult", new String[] {}, locale.getLocale()));
     }
 
     @Override
