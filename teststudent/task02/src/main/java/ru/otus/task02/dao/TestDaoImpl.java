@@ -28,8 +28,6 @@ public class TestDaoImpl implements TestDao {
     @Override
     public Test read() {
         Test test = new Test();
-        System.out.println(resource);
-
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         getClass().getClassLoader().getResourceAsStream(resource)))) {
