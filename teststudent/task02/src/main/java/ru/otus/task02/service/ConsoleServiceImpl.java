@@ -61,7 +61,7 @@ public class ConsoleServiceImpl implements ConsoleService {
 
     public void printAnswerVariants(Puzzle pzl){
         for(Answer ans:pzl.getAnswerList()){
-            System.out.println(ans.getAnswer().toString());
+            System.out.println(ans.getText());
         }
     }
 
@@ -72,7 +72,7 @@ public class ConsoleServiceImpl implements ConsoleService {
     @Override
     public void printTestResult(List<Puzzle> puzzleList){
         for(Puzzle pzl:puzzleList){
-            System.out.println(pzl.getQuestion().toString());
+            System.out.println(pzl.getQuestion().getText());
             System.out.println(pzl.checkAnswer());
         }
     }

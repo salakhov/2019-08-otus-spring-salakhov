@@ -5,14 +5,13 @@ package ru.otus.task02.domain;
  */
 
 public class Question {
-    private String text;
+    private String question;
 
-    public Question(String text) {
-        this.text = text;
+    public Question(String question) {
+        this.question = question;
     }
 
-    @Override
-    public String toString() {
-        return text;
+    public String getText() {
+        return question;
     }
 }
