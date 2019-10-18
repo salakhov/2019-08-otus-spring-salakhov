@@ -18,14 +18,15 @@ import ru.otus.task02.service.*;
 public class AppConfig {
 
     @Autowired
-    public UserService userService(TestService testService, ConsoleService consoleService){
-        return new UserServiceImpl(testService,consoleService);
+    @Bean
+    public UserService userService(ConsoleService consoleService){
+        return new UserServiceImpl(consoleService);
 
     }
     @Autowired
     @Bean
-    public TestService testService(TestDao dao){
-        return new TestServiceImpl(dao);
+    public TestService testService(TestDao dao,UserService userService){
+        return new TestServiceImpl(dao,userService);
     }
     @Bean
     public TestDao testDao(@Value("${file.path}") String resource,@Value("${locale.language}") String locale){

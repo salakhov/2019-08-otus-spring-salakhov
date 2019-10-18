@@ -7,6 +7,7 @@ import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 import ru.otus.task02.domain.User;
 
+import java.util.List;
 import java.util.Locale;
 
 
@@ -15,25 +16,15 @@ import java.util.Locale;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private TestService testService;
     private ConsoleService consoleService;
     private User user;
 
     @Autowired
-    public UserServiceImpl(TestService testService, ConsoleService consoleService) {
-        this.testService = testService;
+    public UserServiceImpl(ConsoleService consoleService) {
         this.consoleService = consoleService;
         user = new User();
     }
 
-    @Override
-    public void testUser(){
-        this.readUserProperties();
-        testService.read();
-        this.getUserAnswers();
-        consoleService.printPrintResultMessage();
-        consoleService.printTestResult(testService.getPuzzleList());
-    }
     @Override
     public User readUserProperties(){
         consoleService.printUserNameRequestMessage();
@@ -44,8 +35,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void getUserAnswers() {
-        for(Puzzle pzl:testService.getPuzzleList()){
+    public void getUserAnswers(List<Puzzle> puzzleList) {
+        for(Puzzle pzl:puzzleList){
             consoleService.printQuestion(pzl);
             consoleService.printAnswerVariantMessage();
             consoleService.printAnswerVariants(pzl);
@@ -53,6 +44,11 @@ public class UserServiceImpl implements UserService {
             Answer ans = new Answer(consoleService.readLine());
             pzl.setUserAnswer(ans);
         }
+    }
+    @Override
+    public void printResult(List<Puzzle> puzzleList){
+        consoleService.printPrintResultMessage();
+        consoleService.printTestResult(puzzleList);
     }
 
 

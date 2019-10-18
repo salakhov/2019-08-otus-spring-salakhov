@@ -11,4 +11,6 @@ import java.util.List;
 public interface TestService {
     void read();
     List<Puzzle> getPuzzleList();
+    void startTest();
+
 }
