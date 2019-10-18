@@ -56,7 +56,7 @@ public class ConsoleServiceImpl implements ConsoleService {
 
     @Override
     public void printQuestion(Puzzle pzl){
-        System.out.println(pzl.getQuestion().toString());
+        System.out.println(pzl.getQuestion().getText());
     }
 
     public void printAnswerVariants(Puzzle pzl){
