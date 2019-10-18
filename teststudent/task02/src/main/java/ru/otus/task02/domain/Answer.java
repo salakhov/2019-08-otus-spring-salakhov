@@ -17,6 +17,7 @@ public class Answer {
 
     @Override
     public boolean equals(Object obj) {
-        return answer.equalsIgnoreCase(obj.toString());
+        Answer ans1 = (Answer)obj;
+        return this.getText().equalsIgnoreCase(ans1.getText());
     }
 }
