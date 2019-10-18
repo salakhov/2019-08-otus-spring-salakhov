@@ -1,8 +1,5 @@
 package ru.otus.task02.dao;
 
-import org.springframework.cglib.core.Local;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 import ru.otus.task02.domain.Question;
