@@ -1,10 +1,14 @@
 package ru.otus.task02.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import ru.otus.task02.dao.TestDao;
 import ru.otus.task02.dao.TestDaoImpl;
 import ru.otus.task02.service.*;
@@ -12,6 +16,7 @@ import ru.otus.task02.service.*;
 @PropertySource("classpath:application.properties")
 @Configuration
 @ComponentScan
+
 public class AppConfig {
 
     public UserService userService(ConsoleService consoleService){
@@ -25,6 +30,7 @@ public class AppConfig {
         return new TestDaoImpl(resource,locale);
     }
 
+    //@Autowired
     public ConsoleService consoleService(LocaleService locale){
         return new ConsoleServiceImpl(locale);
     }
@@ -36,5 +42,14 @@ public class AppConfig {
 
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource ms
+                = new ReloadableResourceBundleMessageSource();
+        ms.setBasename("/i18n/bundle");
+        ms.setDefaultEncoding("UTF-8");
+        return ms;
     }
 }

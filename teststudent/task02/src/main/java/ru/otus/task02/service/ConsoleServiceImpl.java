@@ -1,5 +1,6 @@
 package ru.otus.task02.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Service;
@@ -13,21 +14,24 @@ import java.util.Scanner;
 public class ConsoleServiceImpl implements ConsoleService {
     private Scanner scanner;
     private LocaleService locale;
+
+    @Autowired
     MessageSource messageSource;
 
     public ConsoleServiceImpl(LocaleService locale) {
         this.scanner = new Scanner(System.in);
         this.locale = locale;
-        this.messageSource = initMessageSource();
+//        this.messageSource = messageSource;
+//        this.messageSource = initMessageSource();
     }
 
-    private MessageSource initMessageSource() {
-        ReloadableResourceBundleMessageSource ms
-                = new ReloadableResourceBundleMessageSource();
-        ms.setBasename("i18n");
-        ms.setDefaultEncoding("UTF-8");
-        return ms;
-    }
+//    private MessageSource initMessageSource() {
+//        ReloadableResourceBundleMessageSource ms
+//                = new ReloadableResourceBundleMessageSource();
+//        ms.setBasename("i18n");
+//        ms.setDefaultEncoding("UTF-8");
+//        return ms;
+//    }
 
     @Override
     public String readLine() {
