@@ -1,13 +1,10 @@
 package ru.otus.task02.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.stereotype.Service;
 import ru.otus.task02.dao.TestDao;
 import ru.otus.task02.dao.TestDaoImpl;
 import ru.otus.task02.service.*;
@@ -17,21 +14,17 @@ import ru.otus.task02.service.*;
 @ComponentScan
 public class AppConfig {
 
-    @Autowired
     public UserService userService(ConsoleService consoleService){
         return new UserServiceImpl(consoleService);
 
     }
-    @Autowired
     public TestService testService(TestDao dao,UserService userService){
         return new TestServiceImpl(dao,userService);
     }
-    @Bean
     public TestDao testDao(@Value("${file.path}") String resource,@Value("${locale.language}") String locale){
         return new TestDaoImpl(resource,locale);
     }
 
-    @Autowired
     public ConsoleService consoleService(LocaleService locale){
         return new ConsoleServiceImpl(locale);
     }
