@@ -18,13 +18,11 @@ import ru.otus.task02.service.*;
 public class AppConfig {
 
     @Autowired
-    @Bean
     public UserService userService(ConsoleService consoleService){
         return new UserServiceImpl(consoleService);
 
     }
     @Autowired
-    @Bean
     public TestService testService(TestDao dao,UserService userService){
         return new TestServiceImpl(dao,userService);
     }
@@ -34,18 +32,15 @@ public class AppConfig {
     }
 
     @Autowired
-    @Bean
     public ConsoleService consoleService(LocaleService locale){
         return new ConsoleServiceImpl(locale);
     }
 
-    @Bean
     public LocaleService LocaleService(@Value("${locale.language}") String language,
             @Value("${locale.country}") String country){
         return new LocaleServiceImpl(language,country);
     }
 
-    @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
