@@ -2,36 +2,24 @@ package ru.otus.task02.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Service;
 import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 @Service
 public class ConsoleServiceImpl implements ConsoleService {
     private Scanner scanner;
-    private LocaleService locale;
+    private LocaleService localeService;
 
     @Autowired
     MessageSource messageSource;
 
     public ConsoleServiceImpl(LocaleService locale) {
         this.scanner = new Scanner(System.in);
-        this.locale = locale;
-//        this.messageSource = messageSource;
-//        this.messageSource = initMessageSource();
+        this.localeService = locale;
     }
-
-//    private MessageSource initMessageSource() {
-//        ReloadableResourceBundleMessageSource ms
-//                = new ReloadableResourceBundleMessageSource();
-//        ms.setBasename("i18n");
-//        ms.setDefaultEncoding("UTF-8");
-//        return ms;
-//    }
 
     @Override
     public String readLine() {
@@ -40,22 +28,22 @@ public class ConsoleServiceImpl implements ConsoleService {
 
     @Override
     public void printUserNameRequestMessage(){
-        System.out.println(messageSource.getMessage("user.name",new String[] {},locale.getLocale()));
+        System.out.println(localeService.getMessage("user.name"));
     }
 
     @Override
     public void printUserSecondNameRequestMessage(){
-        System.out.println(messageSource.getMessage("user.lastname", new String[] {}, locale.getLocale()));
+        System.out.println(localeService.getMessage("user.lastname"));
     }
 
     @Override
     public void printAnswerVariantMessage(){
-        System.out.println(messageSource.getMessage("app.iface.variants", new String[] {}, locale.getLocale()));
+        System.out.println(localeService.getMessage("app.iface.variants"));
     }
 
     @Override
     public void printChooseVariantMessage(){
-        System.out.println(messageSource.getMessage("app.iface.typeanswer", new String[] {}, locale.getLocale()));
+        System.out.println(localeService.getMessage("app.iface.typeanswer"));
     }
 
     @Override
@@ -70,7 +58,7 @@ public class ConsoleServiceImpl implements ConsoleService {
     }
 
     public void printPrintResultMessage(){
-        System.out.println(messageSource.getMessage("app.iface.printresult", new String[] {}, locale.getLocale()));
+        System.out.println(localeService.getMessage("app.iface.printresult"));
     }
 
     @Override
