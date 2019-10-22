@@ -1,7 +1,7 @@
 package ru.otus.task02.dao;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
+import ru.otus.task02.config.AppProperties;
 import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 import ru.otus.task02.domain.Question;
@@ -18,11 +18,9 @@ import ru.otus.task02.domain.Test;
 @Repository
 public class TestDaoImpl implements TestDao {
     private String resource;
-    private String locale;
 
-    public TestDaoImpl(@Value("${file.path}") String resource, @Value("${locale.language}") String locale) {
-        this.resource = resource;
-        this.locale = locale;
+    public TestDaoImpl(AppProperties appProperties) {
+        this.resource = appProperties.getFilepath();
     }
 
     @Override
