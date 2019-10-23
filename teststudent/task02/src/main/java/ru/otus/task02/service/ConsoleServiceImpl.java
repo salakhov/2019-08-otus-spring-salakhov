@@ -3,6 +3,7 @@ package ru.otus.task02.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
+import ru.otus.task02.config.AppProperties;
 import ru.otus.task02.domain.Answer;
 import ru.otus.task02.domain.Puzzle;
 
@@ -11,14 +12,15 @@ import java.util.Scanner;
 @Service
 public class ConsoleServiceImpl implements ConsoleService {
     private Scanner scanner;
+
+    @Autowired
     private LocaleService localeService;
 
     @Autowired
     MessageSource messageSource;
 
-    public ConsoleServiceImpl(LocaleService locale) {
+    public ConsoleServiceImpl() {
         this.scanner = new Scanner(System.in);
-        this.localeService = locale;
     }
 
     @Override
