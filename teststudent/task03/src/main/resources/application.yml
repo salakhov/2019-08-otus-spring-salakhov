@@ -1,11 +1,8 @@
-file:
-  path: questions_ru.csv
 locale:
   language: ru
   country: RU
-server:
-  port: 8090
 logging:
   level:
-    org.springframework: DEBUG
-
+    org.springframework: INFO
+file:
+  path: questions_ru.csv

@@ -6,24 +6,21 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import ru.otus.task03.service.TestService;
 
+import java.util.Arrays;
+
 @SpringBootApplication
-@EnableConfigurationProperties
-public class Main implements CommandLineRunner {
+public class Main{
 
-	public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(Main.class);
-        app.run();
-
-//	    SpringApplication.run(Main.class, args);
-	}
-
-    @Override
-    public void run(String... args) throws Exception {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Main.class);
-        TestService testService = ctx.getBean(TestService.class);
+    public static void main(String[] args) {
+	    ApplicationContext appContext = SpringApplication.run(Main.class, args);
+        TestService testService = appContext.getBean(TestService.class);
         testService.startTest();
-    }
+
+	}
 }
