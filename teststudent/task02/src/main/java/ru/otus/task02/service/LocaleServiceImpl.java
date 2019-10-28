@@ -9,9 +9,9 @@ import java.util.Locale;
 
 @Service
 public class LocaleServiceImpl implements LocaleService {
-    private Locale locale;
-    private String language;
-    private String country;
+    final private Locale locale;
+    final private String language;
+    final private String country;
 
     @Autowired
     MessageSource messageSource;
