@@ -8,11 +8,11 @@ import java.util.Locale;
 
 @Service
 public class LocaleServiceImpl implements LocaleService {
-    final private Locale locale;
-    final private String language;
-    final private String country;
+    private final Locale locale;
+    private final String language;
+    private final String country;
 
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
     public LocaleServiceImpl(AppProperties appProperties,MessageSource messageSource) {
         this.language = appProperties.getLanguage();

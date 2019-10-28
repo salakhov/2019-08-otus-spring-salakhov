@@ -16,11 +16,11 @@ public class ConsoleServiceImpl implements ConsoleService {
     @Autowired
     private LocaleService localeService;
 
-    @Autowired
-    MessageSource messageSource;
+    private final MessageSource messageSource;
 
-    public ConsoleServiceImpl() {
+    public ConsoleServiceImpl(MessageSource messageSource) {
         this.scanner = new Scanner(System.in);
+        this.messageSource = messageSource;
     }
 
     @Override
