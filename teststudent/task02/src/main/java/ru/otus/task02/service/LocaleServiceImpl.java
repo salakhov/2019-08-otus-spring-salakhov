@@ -1,6 +1,5 @@
 package ru.otus.task02.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.context.MessageSource;
 import ru.otus.task02.config.AppProperties;
@@ -13,13 +12,13 @@ public class LocaleServiceImpl implements LocaleService {
     final private String language;
     final private String country;
 
-    @Autowired
-    MessageSource messageSource;
+    private MessageSource messageSource;
 
-    public LocaleServiceImpl(AppProperties appProperties) {
+    public LocaleServiceImpl(AppProperties appProperties,MessageSource messageSource) {
         this.language = appProperties.getLanguage();
         this.country = appProperties.getCountry();
         this.locale = new Locale(language,country);
+        this.messageSource = messageSource;
     }
 
     @Override
