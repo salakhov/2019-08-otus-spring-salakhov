@@ -5,7 +5,7 @@ package ru.otus.task03.domain;
  */
 
 public class Question {
-    private String question;
+    private final String question;
 
     public Question(String question) {
         this.question = question;

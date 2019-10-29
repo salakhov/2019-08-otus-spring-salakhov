@@ -7,10 +7,10 @@ import java.util.List;
  */
 
 public class Puzzle {
-    private Question question;
-    private Answer rightAnswer;
+    private final Question question;
+    private final Answer rightAnswer;
     private Answer userAnswer;
-    private List<Answer> answerList;
+    private final List<Answer> answerList;
 
 
     public Puzzle(Question question, Answer rightAnswer, List<Answer> answerList) {
