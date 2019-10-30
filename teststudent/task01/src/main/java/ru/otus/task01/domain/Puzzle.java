@@ -19,18 +19,13 @@ public class Puzzle {
         this.answerList = answerList;
     }
 
+    public Question getQuestion() {
+        return question;
+    }
+
     public List<Answer> getAnswerList() {
         return answerList;
     }
-
-    public void print(){
-        question.print();
-        rightAnswer.print();
-        userAnswer.print();
-        for(Answer ans:answerList)
-            ans.print();
-    }
-    public void printQuestion(){question.print();}
     public void setUserAnswer(Answer userAnswer){
         this.userAnswer = userAnswer;
     }

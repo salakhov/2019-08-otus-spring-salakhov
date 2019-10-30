@@ -15,10 +15,6 @@ public class Answer {
         this.answer = answer;
     }
 
-    public void print(){
-        System.out.println("answer: "+answer.toString());
-    }
-
     @Override
     public boolean equals(Object obj) {
         return answer.equalsIgnoreCase(obj.toString());
