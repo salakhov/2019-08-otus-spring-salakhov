@@ -41,8 +41,10 @@ public class AppShellServiceImpl {
 
     @ShellMethod(value = "Выход",key={"logout"})
     public void logout(){
-        userService.setUserSecondName("");
-        userService.setUserName("");
+        System.out.println(String.format("Buy: %s %s",userService.getUserName(),userService.getUserSecondName()));
+        userService.setUserSecondName(null);
+        userService.setUserName(null);
+        testService.resetResults();
     }
 
     private Availability isRunAvailable() {

@@ -44,4 +44,9 @@ public class TestServiceImpl implements TestService {
     public boolean isTestPassed(){
         return this.testPassed;
     }
+
+    @Override
+    public void resetResults(){
+        this.testPassed=false;
+    }
 }
