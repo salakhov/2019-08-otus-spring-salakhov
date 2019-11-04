@@ -1,8 +1,5 @@
 package ru.otus.task04.domain;
 
-import org.springframework.stereotype.Component;
-
-//@Component
 public class User {
     private String firstName;
     private String secondName;
