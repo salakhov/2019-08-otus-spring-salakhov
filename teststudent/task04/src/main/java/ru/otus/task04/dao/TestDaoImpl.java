@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import ru.otus.task04.domain.Test;
+import ru.otus.task04.domain.StudentTest;
 
 @Repository
 public class TestDaoImpl implements TestDao {
@@ -24,8 +24,8 @@ public class TestDaoImpl implements TestDao {
     }
 
     @Override
-    public Test read() {
-        Test test = new Test();
+    public StudentTest read() {
+        StudentTest test = new StudentTest();
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         getClass().getClassLoader().getResourceAsStream(resource)))) {

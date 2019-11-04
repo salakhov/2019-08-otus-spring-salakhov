@@ -1,6 +1,6 @@
 package ru.otus.task04.dao;
-import ru.otus.task04.domain.Test;
+import ru.otus.task04.domain.StudentTest;
 
 public interface TestDao {
-    Test read();
+    StudentTest read();
 }

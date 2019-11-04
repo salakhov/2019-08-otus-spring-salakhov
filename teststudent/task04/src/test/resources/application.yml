@@ -6,7 +6,8 @@ logging:
     org.springframework: INFO
 file:
   path: questions_ru.csv
-#spring:
-#  shell:
-#    interactive:
-#      enabled: false
+
+spring:
+  shell:
+    interactive:
+      enabled: false

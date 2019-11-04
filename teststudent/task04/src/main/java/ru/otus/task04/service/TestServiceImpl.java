@@ -3,7 +3,7 @@ package ru.otus.task04.service;
 import org.springframework.stereotype.Service;
 import ru.otus.task04.dao.TestDao;
 import ru.otus.task04.domain.Puzzle;
-import ru.otus.task04.domain.Test;
+import ru.otus.task04.domain.StudentTest;
 
 import java.util.List;
 
@@ -13,12 +13,14 @@ import java.util.List;
 @Service
 public class TestServiceImpl implements TestService {
     private TestDao dao;
-    private Test test;
+    private StudentTest test;
     private UserService userService;
+    private boolean testPassed;
 
     public TestServiceImpl(TestDao dao,UserService userService) {
         this.dao = dao;
         this.userService = userService;
+        testPassed=false;
     }
 
     @Override
@@ -33,9 +35,13 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public void startTest() {
-        userService.readUserProperties();
         this.read();
         userService.getUserAnswers(getPuzzleList());
-        userService.printResult(getPuzzleList());
+        this.testPassed=true;
+    }
+
+    @Override
+    public boolean isTestPassed(){
+        return this.testPassed;
     }
 }

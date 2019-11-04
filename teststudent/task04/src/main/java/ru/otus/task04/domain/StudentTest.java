@@ -1,14 +1,16 @@
 package ru.otus.task04.domain;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 /**
  * Тест. Сущьность для хранения всего теста.
  */
-
-public class Test {
+//@Component
+public class StudentTest {
     private List<Puzzle> puzzleList;
 
-    public Test() {
+    public StudentTest() {
     }
 
     public List<Puzzle> getPuzzleList() {

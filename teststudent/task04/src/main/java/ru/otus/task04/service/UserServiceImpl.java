@@ -35,6 +35,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void setUserName(String username){
+        user.setFirstName(username);
+    }
+
+    @Override
+    public void setUserSecondName(String userSecondName){
+        user.setSecondName(userSecondName);
+    }
+
+    @Override
+    public String getUserName(){
+        return user.getFirstName();
+    }
+
+    @Override
+    public String getUserSecondName(){
+        return user.getSecondName();
+    }
+
+
+    @Override
     public void getUserAnswers(List<Puzzle> puzzleList) {
         for(Puzzle pzl:puzzleList){
             consoleService.printQuestion(pzl);

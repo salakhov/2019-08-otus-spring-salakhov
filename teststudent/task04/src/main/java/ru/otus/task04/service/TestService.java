@@ -12,5 +12,6 @@ public interface TestService {
     void read();
     List<Puzzle> getPuzzleList();
     void startTest();
+    boolean isTestPassed();
 
 }
