@@ -1,25 +1,24 @@
 package ru.otus.task04.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
-import ru.otus.task04.domain.User;
 import ru.otus.task04.service.TestService;
 import ru.otus.task04.service.UserService;
 
 @ShellComponent
 public class AppShellControllerImpl {
-//    @Autowired
-//    ConsoleService consoleService;
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    TestService testService;
+    private final TestService testService;
+
+    public AppShellControllerImpl(TestService testService,UserService userService) {
+        this.userService = userService;
+        this.testService = testService;
+    }
 
     @ShellMethod(value = "Authentication [firstname] [lastname]. mikhail salakhov by default",key = { "l", "login" })
     public String login(@ShellOption(defaultValue = "mikhail") String firstName,
