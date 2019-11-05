@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 @Service
 public class ConsoleServiceImpl implements ConsoleService {
-    private Scanner scanner;
+    private final Scanner scanner;
     private final LocaleService localeService;
 
     public ConsoleServiceImpl(LocaleService localeService) {
