@@ -13,13 +13,13 @@ public class LocaleServiceImpl implements LocaleService {
     private final String language;
     private final String country;
 
-    @Autowired
-    MessageSource messageSource;
+    private final MessageSource messageSource;
 
-    public LocaleServiceImpl(AppProperties appProperties) {
+    public LocaleServiceImpl(AppProperties appProperties,MessageSource messageSource) {
         this.language = appProperties.getLanguage();
         this.country = appProperties.getCountry();
         this.locale = new Locale(language,country);
+        this.messageSource = messageSource;
     }
 
     @Override
