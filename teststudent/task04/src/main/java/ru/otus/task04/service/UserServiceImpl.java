@@ -16,8 +16,8 @@ import java.util.Locale;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private ConsoleService consoleService;
-    private User user;
+    private final ConsoleService consoleService;
+    private final User user;
 
     @Autowired
     public UserServiceImpl(ConsoleService consoleService) {

@@ -12,9 +12,9 @@ import java.util.List;
  */
 @Service
 public class TestServiceImpl implements TestService {
-    private TestDao dao;
+    private final TestDao dao;
     private StudentTest test;
-    private UserService userService;
+    private final UserService userService;
     private boolean testPassed;
 
     public TestServiceImpl(TestDao dao,UserService userService) {

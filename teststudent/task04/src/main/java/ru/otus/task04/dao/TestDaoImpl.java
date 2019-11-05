@@ -17,7 +17,7 @@ import ru.otus.task04.domain.StudentTest;
 
 @Repository
 public class TestDaoImpl implements TestDao {
-    private String resource;
+    private final String resource;
 
     public TestDaoImpl(AppProperties appProperties) {
         this.resource = appProperties.getFilepath();

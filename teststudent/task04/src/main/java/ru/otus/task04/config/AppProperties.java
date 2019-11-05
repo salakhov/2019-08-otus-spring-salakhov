@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppProperties {
-    private String language;
-    private String country;
-    private String filepath;
+    private final String language;
+    private final String country;
+    private final String filepath;
 
     public AppProperties(@Value("${locale.language}") String language,
                          @Value("${locale.country}")String country,
