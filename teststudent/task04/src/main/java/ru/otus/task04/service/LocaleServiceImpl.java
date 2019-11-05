@@ -23,7 +23,7 @@ public class LocaleServiceImpl implements LocaleService {
     }
 
     @Override
-    public String getMessage(String messageSource){
-        return this.messageSource.getMessage(messageSource,new String[] {},locale);
+    public String getMessage(String messageKey){
+        return this.messageSource.getMessage(messageKey,new String[] {},locale);
     }
 }

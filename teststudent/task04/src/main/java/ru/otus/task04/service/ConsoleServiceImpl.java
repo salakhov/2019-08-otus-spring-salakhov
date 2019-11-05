@@ -12,15 +12,11 @@ import java.util.Scanner;
 @Service
 public class ConsoleServiceImpl implements ConsoleService {
     private Scanner scanner;
+    private final LocaleService localeService;
 
-    @Autowired
-    private LocaleService localeService;
-
-    @Autowired
-    MessageSource messageSource;
-
-    public ConsoleServiceImpl() {
+    public ConsoleServiceImpl(LocaleService localeService) {
         this.scanner = new Scanner(System.in);
+        this.localeService = localeService;
     }
 
     @Override
