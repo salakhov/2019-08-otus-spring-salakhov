@@ -1,4 +1,4 @@
-package ru.otus.task04.service;
+package ru.otus.task04.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Тест команд Shell")
 @SpringBootTest
-class AppShellServiceImplTest {
+class AppShellControllerImplTest {
 
     @Autowired
     private Shell shell;

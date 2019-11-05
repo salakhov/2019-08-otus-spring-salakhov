@@ -1,4 +1,4 @@
-package ru.otus.task04.service;
+package ru.otus.task04.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
@@ -7,9 +7,11 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
 import ru.otus.task04.domain.User;
+import ru.otus.task04.service.TestService;
+import ru.otus.task04.service.UserService;
 
 @ShellComponent
-public class AppShellServiceImpl {
+public class AppShellControllerImpl {
 //    @Autowired
 //    ConsoleService consoleService;
 
