@@ -1,0 +1,13 @@
+locale:
+  language: ru
+  country: RU
+logging:
+  level:
+    org.springframework: INFO
+file:
+  path: questions_ru.csv
+
+spring:
+  shell:
+    interactive:
+      enabled: false
