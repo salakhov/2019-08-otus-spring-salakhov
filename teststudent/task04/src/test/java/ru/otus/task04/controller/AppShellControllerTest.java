@@ -11,7 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Тест команд Shell")
 @SpringBootTest
-class AppShellControllerImplTest {
+class AppShellControllerTest {
 
     @Autowired
     private Shell shell;

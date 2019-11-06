@@ -9,13 +9,13 @@ import ru.otus.task04.service.TestService;
 import ru.otus.task04.service.UserService;
 
 @ShellComponent
-public class AppShellControllerImpl {
+public class AppShellController {
 
     private final UserService userService;
 
     private final TestService testService;
 
-    public AppShellControllerImpl(TestService testService,UserService userService) {
+    public AppShellController(TestService testService, UserService userService) {
         this.userService = userService;
         this.testService = testService;
     }
