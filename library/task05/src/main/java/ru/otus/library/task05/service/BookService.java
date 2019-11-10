@@ -1,9 +1,9 @@
-package ru.otus.library.task05.dao;
+package ru.otus.library.task05.service;
 
 import ru.otus.library.task05.domain.Book;
 
 import java.util.List;
 
-public interface BookDao {
+public interface BookService {
     List<Book> getAllBooks();
 }

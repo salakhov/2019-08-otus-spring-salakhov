@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import ru.otus.library.task05.dao.AuthorDao;
 import ru.otus.library.task05.domain.Author;
 
+import java.util.List;
+
 @Service
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorDao authorDao;
@@ -14,6 +16,18 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author getAuthor(long id){
-        return authorDao.getById(id);
+        return authorDao.getAuthorById(id);
     }
+
+    @Override
+    public List<Author> getAllAuthors(){
+        return authorDao.getAllAuthors();
+    }
+
+    @Override
+    public Author getAuthorByLastName(String lastname){
+        return authorDao.getAuthorByLastName(lastname);
+    }
+
+
 }

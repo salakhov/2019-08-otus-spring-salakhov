@@ -22,10 +22,23 @@ public class AuthorDaoImpl implements AuthorDao {
     }
 
     @Override
-    public Author getById(long id){
+    public Author getAuthorById(long id){
         Map<String, Object> params = Collections.singletonMap("id", id);
         Author author =namedParameterJdbcOperations.queryForObject(
-                "select id,first_name,last_name from authors where id = :id",params, new AuthorMapper());
+                "select id,first_name,last_name,second_name from authors where id = :id",params, new AuthorMapper());
         return author;
+    }
+
+    @Override
+    public Author getAuthorByLastName(String lastname){
+        Map<String, Object> params = Collections.singletonMap("last_name", lastname);
+        Author author =namedParameterJdbcOperations.queryForObject(
+                "select id,first_name,last_name,second_name from authors where last_name = :last_name",params, new AuthorMapper());
+        return author;
+    }
+
+    @Override
+    public List<Author> getAllAuthors(){
+        return jdbc.query("select * from authors",new AuthorMapper());
     }
 }
