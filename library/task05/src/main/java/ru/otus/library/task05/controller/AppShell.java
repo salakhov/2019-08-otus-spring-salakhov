@@ -7,9 +7,13 @@ import org.springframework.shell.standard.ShellOption;
 import ru.otus.library.task05.dao.AuthorDao;
 import ru.otus.library.task05.dao.AuthorDaoImpl;
 import ru.otus.library.task05.domain.Author;
+import ru.otus.library.task05.domain.Book;
 import ru.otus.library.task05.service.AuthorService;
 import ru.otus.library.task05.service.BookService;
+import ru.otus.library.task05.service.CatalogService;
 import ru.otus.library.task05.service.GenreService;
+
+import java.util.List;
 
 @ShellComponent
 public class AppShell {
@@ -22,6 +26,9 @@ public class AppShell {
 
     @Autowired
     GenreService genreService;
+
+    @Autowired
+    CatalogService catalogService;
 
     @ShellMethod(value = "login",key = "l")
     public String login(@ShellOption(defaultValue = "mikhail")String login){
@@ -54,5 +61,14 @@ public class AppShell {
     @ShellMethod(value = "gag",key = {"gag","gat all genres"})
     public void getAllGenres(){
         genreService.getAllGenres().forEach(n->System.out.println(n.getName()));
+    }
+
+    @ShellMethod(value = "sabb",key = {"sabb","search author of book"})
+    public void searchAllAuthorsOfBook(String bookTitlle){
+        List<Book> bookList = bookService.getBookByTitle(bookTitlle);
+        if(bookList.isEmpty())
+            System.out.println("Книга с таким наизванием не найдена");
+        List<Author> authorList = catalogService.searchAllAuthorsOfBook(bookList.get(0));
+        authorList.forEach((n)->System.out.println(n.getLastName()));
     }
 }

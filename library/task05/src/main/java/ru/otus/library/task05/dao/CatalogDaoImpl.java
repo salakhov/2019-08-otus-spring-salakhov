@@ -2,12 +2,14 @@ package ru.otus.library.task05.dao;
 
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.stereotype.Repository;
 import ru.otus.library.task05.domain.Author;
 import ru.otus.library.task05.domain.Book;
 import ru.otus.library.task05.domain.Genre;
 
 import java.util.List;
 
+@Repository
 public class CatalogDaoImpl implements CatalogDao {
     JdbcOperations jdbc;
     NamedParameterJdbcOperations namedParameterJdbcOperations;
@@ -19,7 +21,11 @@ public class CatalogDaoImpl implements CatalogDao {
 
     @Override
     public List<Author> searchAllAuthorsOfBook(Book book) {
-        return null;
+
+
+        return namedParameterJdbcOperations.query(
+                "select id,first_name,second_name,last_name from AUTHORS ",
+                new AuthorMapper());
     }
 
     @Override

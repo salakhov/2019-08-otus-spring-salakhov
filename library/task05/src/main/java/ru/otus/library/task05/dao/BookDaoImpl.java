@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 import ru.otus.library.task05.domain.Book;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BookDaoImpl implements BookDao {
@@ -20,5 +22,11 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> getAllBooks() {
         return jdbc.query("select * from books",new BookMapper());
+    }
+
+    @Override
+    public List<Book> getBookByTitle(String title) {
+        Map<String, Object> params = Collections.singletonMap("title", title);
+        return namedParameterJdbcOperations.query("select id, title from books where title = :title",params,new BookMapper());
     }
 }
