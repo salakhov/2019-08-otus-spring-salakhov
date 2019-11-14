@@ -69,6 +69,6 @@ public class AppShell {
         if(bookList.isEmpty())
             System.out.println("Книга с таким наизванием не найдена");
         List<Author> authorList = catalogService.searchAllAuthorsOfBook(bookList.get(0));
-        authorList.forEach((n)->System.out.println(n.getLastName()));
+        authorList.forEach((n)->System.out.println(n.getLastName() + " " + n.getFirstName()));
     }
 }

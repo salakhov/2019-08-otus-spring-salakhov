@@ -7,7 +7,9 @@ import ru.otus.library.task05.domain.Author;
 import ru.otus.library.task05.domain.Book;
 import ru.otus.library.task05.domain.Genre;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CatalogDaoImpl implements CatalogDao {
@@ -21,11 +23,11 @@ public class CatalogDaoImpl implements CatalogDao {
 
     @Override
     public List<Author> searchAllAuthorsOfBook(Book book) {
-
-
-        return namedParameterJdbcOperations.query(
-                "select id,first_name,second_name,last_name from AUTHORS ",
-                new AuthorMapper());
+        Map<String, Object> params = Collections.singletonMap("book_title", book.getTitle());
+        String str ="select a.id,a.first_name,a.second_name,a.last_name from AUTHORS a " +
+                "where a.id in (select c.author_id from catalog c " +
+                "where c.book_id=(select id from books where title=:book_title))";
+        return namedParameterJdbcOperations.query(str,params,new AuthorMapper());
     }
 
     @Override
