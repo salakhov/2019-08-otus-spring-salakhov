@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS authors cascade;
-DROP TABLE IF EXISTS public.books cascade;
-DROP TABLE IF EXISTS public.genres cascade;
-DROP TABLE IF EXISTS public.catalog cascade;
-DROP TABLE IF EXISTS public.library cascade;
+DROP TABLE IF EXISTS books cascade;
+DROP TABLE IF EXISTS genres cascade;
+DROP TABLE IF EXISTS catalog cascade;
+DROP TABLE IF EXISTS library cascade;
 
 CREATE TABLE authors
 (
