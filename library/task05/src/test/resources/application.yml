@@ -1,5 +1,10 @@
 #spring:
 #  datasource:
-#    data: data.sql
+##    data: data.sql
+#spring:
+#  datasource:
+
 spring:
-  datasource:
+  shell:
+    interactive:
+      enabled: false

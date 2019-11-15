@@ -21,23 +21,24 @@ import java.util.List;
 @ShellComponent
 public class AppShell {
 
-    @Autowired
-    AuthorService authorService;
-
-    @Autowired
-    BookService bookService;
-
-    @Autowired
-    GenreService genreService;
-
-    @Autowired
-    CatalogService catalogService;
+    private AuthorService authorService;
+    private BookService bookService;
+    private GenreService genreService;
+    private CatalogService catalogService;
     private boolean loggedIn;
+
+    public AppShell(AuthorService authorService, BookService bookService, GenreService genreService, CatalogService catalogService) {
+        this.authorService = authorService;
+        this.bookService = bookService;
+        this.genreService = genreService;
+        this.catalogService = catalogService;
+        this.loggedIn = false;
+    }
 
     @ShellMethod(value = "login",key = "l")
     public String login(@ShellOption(defaultValue = "user")String login){
         loggedIn = true;
-        return String.format("Welcome %s", login);
+        return String.format("Welcome: %s", login);
     }
     @ShellMethod(value = "logout",key = "logout")
     @ShellMethodAvailability(value = "isLoggedIn")
