@@ -41,4 +41,15 @@ public class AuthorDaoImpl implements AuthorDao {
     public List<Author> getAllAuthors(){
         return jdbc.query("select * from authors",new AuthorMapper());
     }
+
+    @Override
+    public long getAuthorCount() {
+        return jdbc.queryForObject("select count(*) from authors",Integer.class);
+    }
+
+    @Override
+    public void insertAuthor(Author author) {
+        jdbc.update("insert into authors (id,first_name,last_name,second_name)" +
+                "values (?,?,?,?)", author.getFirstName(),author.getLastName(),author.getSecondName());
+    }
 }
