@@ -25,7 +25,7 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public List<Book> getBookByTitle(String title) {
+    public List<Book> getBooksByTitle(String title) {
         Map<String, Object> params = Collections.singletonMap("title", title);
         return namedParameterJdbcOperations.query("select id, title from books where title = :title",params,new BookMapper());
     }

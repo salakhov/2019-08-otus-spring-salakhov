@@ -31,8 +31,11 @@ public class CatalogDaoImpl implements CatalogDao {
     }
 
     @Override
-    public List<Book> searchAllBooksOfAuthor(Author book) {
-        return null;
+    public List<Book> searchAllBooksOfAuthor(Author author) {
+        Map<String,Object> params = Collections.singletonMap("lastname",author.getLastName());
+        String query = "select b.id, b.title from books b where b.id in (select c.book_id from catalog c" +
+                " where c.author_id=(select id from authors where last_name=:lastname))";
+        return namedParameterJdbcOperations.query(query,params,new BookMapper());
     }
 
     @Override

@@ -6,16 +6,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("DAO для работы c авторами возвращает:")
 @ExtendWith(SpringExtension.class)
 @JdbcTest
 @Import(AuthorDaoImpl.class)
-
 class AuthorDaoImplTest {
     private static final long DEFAULT_AUTHOR_ID = 1;
     private static final long DEFAULT_AUTHOR_COUNT=4;

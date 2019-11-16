@@ -22,7 +22,7 @@ public class CatalogServiceImpl implements CatalogService{
     }
 
     @Override
-    public List<Book> searchAllBooksOfAuthor(Author book){
-        return null;
+    public List<Book> searchAllBooksOfAuthor(Author author){
+        return catalogDao.searchAllBooksOfAuthor(author);
     }
 }
