@@ -47,8 +47,8 @@ class AppShellTest {
     void shouldReturnExpectedGreetimgAfterLogin() {
         String res = (String) shell.evaluate(()->COMMAND_LOGIN);
         assertThat(res).isEqualTo(GREETING_PATTERN,DEFAILT_LOGIN);
-        String res1 = (String) shell.evaluate(()->String.format(COMMAND_LOGIN_USER_PATTERN,CUSTOM_LOGIN));
-        assertThat(res1).isEqualTo(String.format(GREETING_PATTERN,CUSTOM_LOGIN));
+        res = (String) shell.evaluate(()->String.format(COMMAND_LOGIN_USER_PATTERN,CUSTOM_LOGIN));
+        assertThat(res).isEqualTo(String.format(GREETING_PATTERN,CUSTOM_LOGIN));
     }
 
     @DisplayName("Должен требовать login перед операцией получения автора")
