@@ -1,8 +1,6 @@
 package ru.otus.library.task05.dao;
 
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
-import ru.otus.library.task05.domain.Author;
 import ru.otus.library.task05.domain.Book;
 
 import java.sql.ResultSet;

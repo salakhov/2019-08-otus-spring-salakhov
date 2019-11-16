@@ -1,13 +1,10 @@
 package ru.otus.library.task05.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.Availability;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
-import ru.otus.library.task05.dao.AuthorDao;
-import ru.otus.library.task05.dao.AuthorDaoImpl;
 import ru.otus.library.task05.domain.Author;
 import ru.otus.library.task05.domain.Book;
 import ru.otus.library.task05.domain.Genre;
@@ -15,8 +12,6 @@ import ru.otus.library.task05.service.AuthorService;
 import ru.otus.library.task05.service.BookService;
 import ru.otus.library.task05.service.CatalogService;
 import ru.otus.library.task05.service.GenreService;
-
-import javax.lang.model.util.AbstractAnnotationValueVisitor6;
 import java.util.List;
 
 @ShellComponent
