@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 import ru.otus.library.task05.domain.Author;
+import ru.otus.library.task05.domain.Book;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,5 +51,13 @@ public class AuthorDaoImpl implements AuthorDao {
     public void insertAuthor(Author author) {
         jdbc.update("insert into authors (id,first_name,last_name,second_name)" +
                 "values (?,?,?,?)", author.getFirstName(),author.getLastName(),author.getSecondName());
+    }
+    @Override
+    public List<Author> searchAllAuthorsOfBook(Book book) {
+        Map<String, Object> params = Collections.singletonMap("book_title", book.getTitle());
+        String str = "select a.id,a.first_name,a.second_name,a.last_name from AUTHORS a " +
+                "where a.id in (select c.author_id from catalog c " +
+                "where c.book_id=(select id from books where title=:book_title))";
+        return namedParameterJdbcOperations.query(str, params, new AuthorMapper());
     }
 }

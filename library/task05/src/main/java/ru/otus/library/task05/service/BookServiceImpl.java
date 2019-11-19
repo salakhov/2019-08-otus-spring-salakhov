@@ -1,7 +1,9 @@
 package ru.otus.library.task05.service;
 
 import org.springframework.stereotype.Service;
+import ru.otus.library.task05.dao.AuthorDao;
 import ru.otus.library.task05.dao.BookDao;
+import ru.otus.library.task05.domain.Author;
 import ru.otus.library.task05.domain.Book;
 
 import java.util.List;
@@ -22,5 +24,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getBooksByTitle(String title) {
         return bookDao.getBooksByTitle(title);
+    }
+
+    @Override
+    public List<Book> searchAllBooksOfAuthor(Author author){
+        return bookDao.searchAllBooksOfAuthor(author);
     }
 }

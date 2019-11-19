@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.otus.library.task05.domain.Author;
+import ru.otus.library.task05.domain.Book;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("DAO для работы c авторами возвращает:")
@@ -40,4 +43,13 @@ class AuthorDaoImplTest {
     void getAllAuthors() {
         assertThat(authorDao.getAllAuthors()).doesNotContainNull();
     }
+
+
+    @DisplayName("Всех авторов книги")
+    @Test
+    void searchAllAuthorsOfBook() {
+        Book book = new Book(3, "Постигая Agile");
+        assertThat(authorDao.searchAllAuthorsOfBook(book)).hasAtLeastOneElementOfType(Author.class);
+    }
+
 }

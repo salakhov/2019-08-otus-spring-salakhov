@@ -8,6 +8,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.otus.library.task05.domain.Author;
+import ru.otus.library.task05.domain.Book;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("ДАО book должен возвращать:")
@@ -30,4 +33,12 @@ class BookDaoImplTest {
     void getBookByTitle() {
         assertThat(bookDao.getBooksByTitle("Евгений Онегин")).isNotEmpty();
     }
+
+    @DisplayName("Все книги автора")
+    @Test
+    void searchAllBooksOfAuthor() {
+        Author author = new Author(1,"Александр","Пушкин","Сергеевич");
+        assertThat(bookDao.searchAllBooksOfAuthor(author)).hasAtLeastOneElementOfType(Book.class);
+    }
+
 }

@@ -3,6 +3,7 @@ package ru.otus.library.task05.service;
 import org.springframework.stereotype.Service;
 import ru.otus.library.task05.dao.AuthorDao;
 import ru.otus.library.task05.domain.Author;
+import ru.otus.library.task05.domain.Book;
 
 import java.util.List;
 
@@ -29,5 +30,8 @@ public class AuthorServiceImpl implements AuthorService {
         return authorDao.getAuthorByLastName(lastname);
     }
 
-
+    @Override
+    public List<Author> searchAllAuthorsOfBook(Book book) {
+        return authorDao.searchAllAuthorsOfBook(book);
+    }
 }

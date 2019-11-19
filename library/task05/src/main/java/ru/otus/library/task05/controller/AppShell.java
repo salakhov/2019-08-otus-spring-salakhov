@@ -10,7 +10,7 @@ import ru.otus.library.task05.domain.Book;
 import ru.otus.library.task05.domain.Genre;
 import ru.otus.library.task05.service.AuthorService;
 import ru.otus.library.task05.service.BookService;
-import ru.otus.library.task05.service.CatalogService;
+//import ru.otus.library.task05.service.CatalogService;
 import ru.otus.library.task05.service.GenreService;
 import java.util.List;
 
@@ -20,14 +20,12 @@ public class AppShell {
     private final AuthorService authorService;
     private final BookService bookService;
     private final GenreService genreService;
-    private final CatalogService catalogService;
     private boolean loggedIn;
 
-    public AppShell(AuthorService authorService, BookService bookService, GenreService genreService, CatalogService catalogService) {
+    public AppShell(AuthorService authorService, BookService bookService, GenreService genreService) {
         this.authorService = authorService;
         this.bookService = bookService;
         this.genreService = genreService;
-        this.catalogService = catalogService;
         this.loggedIn = false;
     }
 
@@ -89,7 +87,7 @@ public class AppShell {
         List<Book> bookList = bookService.getBooksByTitle(bookTitlle);
         if(bookList.isEmpty())
             System.out.println("Книга с таким наизванием не найдена");
-        List<Author> authorList = catalogService.searchAllAuthorsOfBook(bookList.get(0));
+        List<Author> authorList = authorService.searchAllAuthorsOfBook(bookList.get(0));
         authorList.forEach((n)->System.out.println(n.getLastName() + " " + n.getFirstName()));
         return authorList;
     }
@@ -98,7 +96,7 @@ public class AppShell {
     @ShellMethodAvailability(value = "isLoggedIn")
     public List<Book> searchAllBooksOfAuthor(String lastname){
         Author author = authorService.getAuthorByLastName(lastname);
-        List<Book> bookList = catalogService.searchAllBooksOfAuthor(author);
+        List<Book> bookList = bookService.searchAllBooksOfAuthor(author);
         bookList.forEach((n)->System.out.println(n.getTitle()));
         return  bookList;
     }
