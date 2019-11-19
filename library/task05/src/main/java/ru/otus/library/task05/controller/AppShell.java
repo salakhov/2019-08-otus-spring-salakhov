@@ -17,10 +17,10 @@ import java.util.List;
 @ShellComponent
 public class AppShell {
 
-    private AuthorService authorService;
-    private BookService bookService;
-    private GenreService genreService;
-    private CatalogService catalogService;
+    private final AuthorService authorService;
+    private final BookService bookService;
+    private final GenreService genreService;
+    private final CatalogService catalogService;
     private boolean loggedIn;
 
     public AppShell(AuthorService authorService, BookService bookService, GenreService genreService, CatalogService catalogService) {

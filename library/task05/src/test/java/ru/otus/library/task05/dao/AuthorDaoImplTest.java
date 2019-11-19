@@ -10,7 +10,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("DAO для работы c авторами возвращает:")
-@ExtendWith(SpringExtension.class)
 @JdbcTest
 @Import(AuthorDaoImpl.class)
 class AuthorDaoImplTest {

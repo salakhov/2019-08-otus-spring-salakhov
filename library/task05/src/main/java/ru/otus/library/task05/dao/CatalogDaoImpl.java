@@ -13,8 +13,8 @@ import java.util.Map;
 
 @Repository
 public class CatalogDaoImpl implements CatalogDao {
-    JdbcOperations jdbc;
-    NamedParameterJdbcOperations namedParameterJdbcOperations;
+    private final JdbcOperations jdbc;
+    private final NamedParameterJdbcOperations namedParameterJdbcOperations;
 
     public CatalogDaoImpl(NamedParameterJdbcOperations namedParameterJdbcOperations) {
         this.jdbc = namedParameterJdbcOperations.getJdbcOperations();
