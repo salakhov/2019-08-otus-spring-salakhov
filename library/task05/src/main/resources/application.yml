@@ -9,6 +9,7 @@ spring:
     username: libraryusr
     password: library
     initialization-mode: always
+    data: data_postgres.sql
 #
 #spring:
 #  datasource:

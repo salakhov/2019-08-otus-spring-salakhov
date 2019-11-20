@@ -52,7 +52,7 @@ class AppShellTest {
     }
 
     @DisplayName("Должен требовать login перед операцией получения автора")
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void getAuthor() {
         Object res = shell.evaluate(()->COMMAND_GET_ALL_AUTHORS);
