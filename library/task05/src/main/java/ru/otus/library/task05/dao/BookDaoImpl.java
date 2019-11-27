@@ -23,13 +23,13 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getAllBooks() {
-        return jdbc.query("select * from books",new BookMapper());
+        return jdbc.query("select id, title,author_id,genre_id from books",new BookResultSetExtractor());
     }
 
     @Override
     public List<Book> getBooksByTitle(String title) {
         Map<String, Object> params = Collections.singletonMap("title", title);
-        return namedParameterJdbcOperations.query("select id, title from books where title = :title",params,new BookMapper());
+        return namedParameterJdbcOperations.query("select id, title,author_id,genre_id from books where title = :title",params,new BookMapper());
     }
     @Override
     public List<Book> searchAllBooksOfAuthor(Author author) {

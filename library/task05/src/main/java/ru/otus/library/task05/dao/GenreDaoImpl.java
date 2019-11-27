@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
 import ru.otus.library.task05.domain.Genre;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class GenreDaoImpl implements GenreDao {
@@ -20,5 +22,11 @@ public class GenreDaoImpl implements GenreDao {
     @Override
     public List<Genre> getAllGenres() {
         return jdbc.query("select * from genres",new GenreMapper());
+    }
+
+    @Override
+    public Genre getGenreById(long id) {
+        Map<String, Object> params = Collections.singletonMap("id", id);
+        return namedParameterJdbcOperations.queryForObject("select id,name from genres where id=:id",params,new GenreMapper());
     }
 }
