@@ -69,6 +69,7 @@ public class AppShell {
     public List<Book> getAllBooks(){
         List<Book> bookList = bookService.getAllBooks();
         bookList.forEach(n->System.out.println(n.getTitle()));
+        bookList.forEach(n->System.out.println(n.getAuthor().getLastName()));
         return bookList;
     }
 

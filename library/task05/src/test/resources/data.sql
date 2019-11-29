@@ -9,13 +9,14 @@ INSERT INTO authors (ID,FIRST_NAME, SECOND_NAME,LAST_NAME) VALUES (2, 'Миха�
 INSERT INTO authors (ID,FIRST_NAME, SECOND_NAME,LAST_NAME) VALUES (3, 'Джениффер','','Грин');
 INSERT INTO authors (ID,FIRST_NAME, SECOND_NAME,LAST_NAME) VALUES (4, 'Эндрю','','Стеллман');
 
-INSERT INTO books (ID,TITLE) VALUES (1, 'Евгений Онегин');
-INSERT INTO books (ID,TITLE) VALUES (2, 'Мастер и маргарита');
-INSERT INTO books (ID,TITLE) VALUES (3, 'Постигая Agile');
-
 INSERT INTO genres (ID,NAME) VALUES (1, 'классика');
 INSERT INTO genres (ID,NAME) VALUES (2, 'драма');
 INSERT INTO genres (ID,NAME) VALUES (3, 'программирование');
+
+INSERT INTO books (ID,TITLE,author_id,genre_id) VALUES (1, 'Евгений Онегин',1,1);
+INSERT INTO books (ID,TITLE,author_id,genre_id) VALUES (2, 'Мастер и маргарита',2,1);
+INSERT INTO books (ID,TITLE,author_id,genre_id) VALUES (3, 'Постигая Agile',3,3);
+
 
 
 INSERT INTO library (ID,title,adress) VALUES (1, 'Горьковская','Советская 1');

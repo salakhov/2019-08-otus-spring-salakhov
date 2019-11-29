@@ -46,3 +46,7 @@ select * from catalog;
 select * from books;
 select id from books where title='Евгений Онегин';
 select id from books where title='Местер и маргарита';
+
+
+select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name
+        from books b, authors a,genres g where b.genre_id=g.id and a.id = b.author_id;

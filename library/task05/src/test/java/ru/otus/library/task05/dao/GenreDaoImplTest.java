@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.otus.library.task05.domain.Genre;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,5 +24,11 @@ class GenreDaoImplTest {
     @Test
     void shouldReturnAllGenres() {
         assertThat(genreDao.getAllGenres()).isNotEmpty();
+    }
+
+    @DisplayName("Жанры по ID")
+    @Test
+    void shoudReturnGenreById(){
+        assertThat(genreDao.getGenreById(1)).isInstanceOfAny(Genre.class);
     }
 }

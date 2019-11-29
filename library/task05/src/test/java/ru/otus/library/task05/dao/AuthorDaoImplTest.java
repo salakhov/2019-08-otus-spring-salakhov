@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.otus.library.task05.domain.Author;
 import ru.otus.library.task05.domain.Book;
+import ru.otus.library.task05.domain.Genre;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,7 +49,9 @@ class AuthorDaoImplTest {
     @DisplayName("Всех авторов книги")
     @Test
     void searchAllAuthorsOfBook() {
-        Book book = new Book(3, "Постигая Agile");
+        Author author = new Author(3,"Джениффер","","Грин");
+        Genre genre = new Genre(3,"программирование");
+        Book book = new Book(3, "Постигая Agile",author,genre);
         assertThat(authorDao.searchAllAuthorsOfBook(book)).hasAtLeastOneElementOfType(Author.class);
     }
 

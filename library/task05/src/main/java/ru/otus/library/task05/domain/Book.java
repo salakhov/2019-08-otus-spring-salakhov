@@ -20,4 +20,8 @@ public class Book {
     public long getId() {
         return id;
     }
+
+    public Author getAuthor() {
+        return author;
+    }
 }

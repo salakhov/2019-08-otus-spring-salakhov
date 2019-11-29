@@ -23,7 +23,8 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getAllBooks() {
-        return jdbc.query("select id, title,author_id,genre_id from books",new BookResultSetExtractor());
+        return (List<Book>) jdbc.query("select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
+                "from books b, authors a,genres g where b.genre_id=g.id and a.id = b.author_id",new BookResultSetExtractor());
     }
 
     @Override
