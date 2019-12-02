@@ -43,6 +43,7 @@ class AppShellTest {
     private static final String COMMAND_SEARCH_AUTHORS_OF_BOOK_TEMPL ="sab %s";
 
     @DisplayName("Должен возвращать приветствие для всех форм логина")
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void shouldReturnExpectedGreetimgAfterLogin() {
         String res = (String) shell.evaluate(()->COMMAND_LOGIN);
@@ -60,6 +61,7 @@ class AppShellTest {
     }
 
     @DisplayName("Должен возвращать список всех авторов")
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void getAllAuthors() {
         shell.evaluate(()->COMMAND_LOGIN);
@@ -68,6 +70,7 @@ class AppShellTest {
     }
 
     @DisplayName("Должен найти автора по фамилии")
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void getAuthorByLastName() {
         shell.evaluate(()->COMMAND_LOGIN);
@@ -76,6 +79,7 @@ class AppShellTest {
     }
 
     @DisplayName("Дoлжен найти фамилию автора по ID")
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void getAuthorLastNameById(){
         shell.evaluate(()->COMMAND_LOGIN);
@@ -84,6 +88,7 @@ class AppShellTest {
     }
 
     @DisplayName("Получить все книги")
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void getAllBooks() {
         shell.evaluate(()->COMMAND_LOGIN);
@@ -92,6 +97,7 @@ class AppShellTest {
     }
 
     @DisplayName("Получить все жанры")
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
     @Test
     void getAllGenres() {
         shell.evaluate(()->COMMAND_LOGIN);
