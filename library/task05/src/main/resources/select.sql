@@ -50,3 +50,11 @@ select id from books where title='Местер и маргарита';
 
 select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name
         from books b, authors a,genres g where b.genre_id=g.id and a.id = b.author_id;
+
+select * from books;
+
+select a.id,a.first_name,a.second_name,a.last_name from AUTHORS a where a.id in (select b.author_id from books b where b.title='Евгений Онегин')
+
+select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name from books b, genres g, authors a where b.title = 'Евгений Онегин' and g.id=b.genre_id and b.author_id = a.id
+
+select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name from books b, genres g, authors a where b.title like 'Евгений Онегин' and g.id=b.genre_id and b.author_id = a.id

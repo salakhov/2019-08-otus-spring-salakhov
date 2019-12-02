@@ -55,9 +55,7 @@ public class AuthorDaoImpl implements AuthorDao {
     @Override
     public List<Author> searchAllAuthorsOfBook(Book book) {
         Map<String, Object> params = Collections.singletonMap("book_title", book.getTitle());
-        String str = "select a.id,a.first_name,a.second_name,a.last_name from AUTHORS a " +
-                "where a.id in (select c.author_id from catalog c " +
-                "where c.book_id=(select id from books where title=:book_title))";
+        String str = "select a.id,a.first_name,a.second_name,a.last_name from AUTHORS a where a.id in (select b.author_id from books b where b.title=:book_title)";
         return namedParameterJdbcOperations.query(str, params, new AuthorMapper());
     }
 }

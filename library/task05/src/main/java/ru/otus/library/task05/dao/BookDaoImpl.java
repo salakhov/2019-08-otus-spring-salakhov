@@ -24,20 +24,24 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> getAllBooks() {
         return (List<Book>) jdbc.query("select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
-                "from books b, authors a,genres g where b.genre_id=g.id and a.id = b.author_id",new BookResultSetExtractor());
+                "from books b, authors a,genres g where b.genre_id=g.id and b.author_id = a.id",new BookResultSetExtractor());
     }
 
     @Override
     public List<Book> getBooksByTitle(String title) {
-        Map<String, Object> params = Collections.singletonMap("title", title);
-        return namedParameterJdbcOperations.query("select id, title,author_id,genre_id from books where title = :title",params,new BookMapper());
+        Map<String, Object> params = Collections.singletonMap("book_title", title);
+        String str = "select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
+                "from books b, genres g, authors a where b.genre_id=g.id and b.author_id=a.id and b.title=:book_title";
+        return (List<Book>) namedParameterJdbcOperations.query(str,params,new BookResultSetExtractor());
+
     }
     @Override
     public List<Book> searchAllBooksOfAuthor(Author author) {
-        Map<String,Object> params = Collections.singletonMap("lastname",author.getLastName());
-        String query = "select b.id, b.title from books b where b.id in (select c.book_id from catalog c" +
-                " where c.author_id=(select id from authors where last_name=:lastname))";
-        return namedParameterJdbcOperations.query(query,params,new BookMapper());
+        Map<String,Object> params = Collections.singletonMap("author_id",author.getId());
+        String query = "select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
+                "from books b, authors a,genres g where b.genre_id=g.id and b.author_id = :author_id";
+        return (List<Book>) namedParameterJdbcOperations.query(query,params,new BookResultSetExtractor());
+
     }
     @Override
     public List<Book> searchAllBooksOfGenre(Genre book) {

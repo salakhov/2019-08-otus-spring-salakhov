@@ -31,7 +31,7 @@ class BookDaoImplTest {
     @DisplayName("книгу по названию")
     @Test
     void getBookByTitle() {
-        assertThat(bookDao.getBooksByTitle("Евгений Онегин")).isNotEmpty();
+        assertThat(bookDao.getBooksByTitle("Евгений Онегин")).hasAtLeastOneElementOfType(Book.class);
     }
 
     @DisplayName("Все книги автора")
