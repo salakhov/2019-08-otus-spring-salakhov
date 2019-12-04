@@ -1,0 +1,27 @@
+
+#  datasource:
+#    data: data.sql
+#
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/library
+    username: libraryusr
+    password: library
+    initialization-mode: always
+    data: data_postgres.sql
+#
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:library
+#    username: library
+#    password: library
+#    driver-class-name: org.h2.Driver
+#    platform: h2
+#
+#  # enable H2 web console and set url for web console
+#  # http://localhost:8080/console
+#  h2:
+#    console:
+#      enabled: true
+#      path: /console
