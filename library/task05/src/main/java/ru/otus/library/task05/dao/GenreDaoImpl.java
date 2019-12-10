@@ -14,7 +14,7 @@ public class GenreDaoImpl implements GenreDao {
     private final JdbcOperations jdbc;
     private final NamedParameterJdbcOperations namedParameterJdbcOperations;
 
-    public GenreDaoImpl(JdbcOperations jdbc, NamedParameterJdbcOperations namedParameterJdbcOperations) {
+    public GenreDaoImpl(NamedParameterJdbcOperations namedParameterJdbcOperations) {
         this.jdbc = namedParameterJdbcOperations.getJdbcOperations();
         this.namedParameterJdbcOperations = namedParameterJdbcOperations;
     }

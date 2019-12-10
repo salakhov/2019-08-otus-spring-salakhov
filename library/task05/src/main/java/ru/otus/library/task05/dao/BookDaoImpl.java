@@ -8,6 +8,7 @@ import ru.otus.library.task05.domain.Book;
 import ru.otus.library.task05.domain.Genre;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getAllBooks() {
+        List<Book> bookList = new LinkedList<>();
         return (List<Book>) jdbc.query("select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
                 "from books b, authors a,genres g where b.genre_id=g.id and b.author_id = a.id",new BookResultSetExtractor());
     }
