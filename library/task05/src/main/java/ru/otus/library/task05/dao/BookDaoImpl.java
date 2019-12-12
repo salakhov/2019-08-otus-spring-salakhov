@@ -26,7 +26,7 @@ public class BookDaoImpl implements BookDao {
     public List<Book> getAllBooks() {
         List<Book> bookList = new LinkedList<>();
         return (List<Book>) jdbc.query("select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
-                "from books b, authors a,genres g where b.genre_id=g.id and b.author_id = a.id",new BookResultSetExtractor());
+                "from books b, authors a,genres g where b.genre_id=g.id and b.author_id = a.id",new BookMapper());
     }
 
     @Override
@@ -34,7 +34,7 @@ public class BookDaoImpl implements BookDao {
         Map<String, Object> params = Collections.singletonMap("book_title", title);
         String str = "select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
                 "from books b, genres g, authors a where b.genre_id=g.id and b.author_id=a.id and b.title=:book_title";
-        return (List<Book>) namedParameterJdbcOperations.query(str,params,new BookResultSetExtractor());
+        return (List<Book>) namedParameterJdbcOperations.query(str,params,new BookMapper());
 
     }
     @Override
@@ -42,7 +42,7 @@ public class BookDaoImpl implements BookDao {
         Map<String,Object> params = Collections.singletonMap("author_id",author.getId());
         String query = "select b.id, b.title,b.author_id, b.genre_id,a.first_name,a.second_name,a.last_name,g.id,g.name\n" +
                 "from books b, authors a,genres g where b.genre_id=g.id and b.author_id = :author_id";
-        return (List<Book>) namedParameterJdbcOperations.query(query,params,new BookResultSetExtractor());
+        return (List<Book>) namedParameterJdbcOperations.query(query,params,new BookMapper());
 
     }
     @Override
