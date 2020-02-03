@@ -10,5 +10,4 @@ public interface BookDao {
     List<Book> getAllBooks();
     List<Book> getBooksByTitle(String title);
     List<Book> searchAllBooksOfAuthor(Author book);
-    List<Book> searchAllBooksOfGenre(Genre book);
 }

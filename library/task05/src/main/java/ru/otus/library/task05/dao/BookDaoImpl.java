@@ -45,8 +45,4 @@ public class BookDaoImpl implements BookDao {
         return (List<Book>) namedParameterJdbcOperations.query(query,params,new BookMapper());
 
     }
-    @Override
-    public List<Book> searchAllBooksOfGenre(Genre book) {
-        return null;
-    }
 }
