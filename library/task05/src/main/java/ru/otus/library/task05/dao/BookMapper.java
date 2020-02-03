@@ -20,23 +20,6 @@ public class BookMapper implements RowMapper<Book> {
 
     @Override
     public Book mapRow(ResultSet resultSet, int i) throws SQLException {
-
-//        while (resultSet.next()){
-//            long id = resultSet.getLong("id");
-//            String title = resultSet.getString("title");
-//            long author_id = resultSet.getLong("author_id");
-//            long genre_id = resultSet.getLong("genre_id");
-//            String genre_name = resultSet.getString("name");
-//            String author_fist_name = resultSet.getString("first_name");
-//            String author_second_name = resultSet.getString("second_name");
-//            String author_last_name = resultSet.getString("last_name");
-//            Genre genre = new Genre(genre_id,genre_name);
-//            Author author = new Author(author_id,author_fist_name,author_last_name,author_second_name);
-//            Book book = new Book(id,title,author,genre);
-//            bookList.add(book);
-//        }
-//        return bookList;
-
         long id = resultSet.getLong("id");
         String title = resultSet.getString("title");
         long author_id = resultSet.getLong("author_id");
@@ -44,7 +27,6 @@ public class BookMapper implements RowMapper<Book> {
         Author author = authorDao.getAuthorById(author_id);
         Genre genre = genreDao.getGenreById(genre_id);
         return new Book(id, title, author, genre);
-//        return null;
     }
 
 }
